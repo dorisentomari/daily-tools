@@ -20,7 +20,9 @@ jobs:
 
       - name: Generate links
         run: |
-          echo "# Documentation\n" > docs-links.md
+          echo "# 所有文档链接" > docs-links.md
+          echo "\n" >> docs-links.md
+          
           for file in docs/*; do
             if [ -f "$file" ]; then
               filename=$(basename "$file")
