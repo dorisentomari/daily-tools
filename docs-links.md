@@ -1,6 +1,6 @@
-# 所有文档链接
-\n
-- [MySQL](docs/MySQL.md)
+# docs 文档链接
+
+- [MySQL常见问题记录](docs/MySQL常见问题记录.md)
 - [Python常用命令](docs/Python常用命令.md)
 - [conda常用命令](docs/conda常用命令.md)
 - [django使用](docs/django使用.md)
