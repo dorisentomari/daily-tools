@@ -1,4 +1,4 @@
-name: 自动生成 docs 文档链接
+name: 自动生成文档链接
 
 run-name: ${{ github.actor }} GitHub Actions 🚀
 
@@ -18,15 +18,27 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: Generate links
+      - name: 自动生成 docs 文档链接
         run: |
-          echo "# 所有文档链接" > docs-links.md
+          echo "# docs 文档链接" > docs-links.md
           echo "" >> docs-links.md
           
           for file in docs/*; do
             if [ -f "$file" ]; then
               filename=$(basename "$file")
               echo "- [${filename%.*}]($file)" >> docs-links.md
+            fi
+          done
+
+      - name: 自动生成 scripts 文档链接
+        run: |
+          echo "# scripts 工具链接" > scripts-links.md
+          echo "" >> scripts-links.md
+          
+          for file in scripts/*; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              echo "- [${filename%.*}]($file)" >> scripts-links.md
             fi
           done
 
