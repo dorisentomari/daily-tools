@@ -1,0 +1,32 @@
+name: Generate Docs Links
+
+on:
+  push:
+    branches:
+      - master  # 根据你的默认分支进行调整
+
+jobs:
+  generate-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate links
+        run: |
+          echo "# Documentation\n" > docs-links.md
+          for file in docs/*; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              echo "- [${filename%.*}]($file)" >> docs-links.md
+            fi
+          done
+
+      - name: Commit updated links
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@users.noreply.github.com'
+          git add docs-links.md
+          git commit -m "Auto-generate docs links [skip ci]"
+          git push
