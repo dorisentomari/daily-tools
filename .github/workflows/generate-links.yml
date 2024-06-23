@@ -1,4 +1,4 @@
-name: 自动生成文档链接
+name: 自动生成文件链接
 
 run-name: ${{ github.actor }} GitHub Actions 🚀
 
@@ -46,10 +46,10 @@ jobs:
         run: mkdir -p links
 
       - name: 移动 docs.md 文件路径
-        run: mv docs.md links/
+        run: mv docs-links.md links/
 
       - name: 移动 scripts.md 文件路径
-        run: mv scripts.md links/
+        run: mv scripts-links.md links/
 
       - name: Commit updated links
         run: |
