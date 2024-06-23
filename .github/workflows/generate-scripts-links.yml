@@ -34,6 +34,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@users.noreply.github.com'
-          git update scripts-links.md
-          git commit -m "Auto-generate docs links [skip ci]"
+          git add scripts-links.md
+          git commit -m "Auto-generate scripts links [skip ci]"
           git push
