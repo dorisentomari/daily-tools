@@ -5,7 +5,7 @@ run-name: ${{ github.actor }} GitHub Actions 🚀
 on:
   push:
     branches:
-      - master  # 根据你的默认分支进行调整
+      - master
 
 jobs:
   generate-links:
