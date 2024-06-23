@@ -1,4 +1,6 @@
 # scripts 工具链接
 
-- [ffmpeg](/scripts/ffmpeg.js)
+- [ffmpegUtils](/scripts/ffmpegUtils.js)
+- [tankUtils](/scripts/tankUtils.js)
+- [twitterUtils](/scripts/twitterUtils.js)
 - [utils](/scripts/utils.js)
