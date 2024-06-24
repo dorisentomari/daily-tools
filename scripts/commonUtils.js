@@ -41,6 +41,18 @@ function textBlack(text) {
   return chalk.black(text);
 }
 
+// 从路径里，获取到文件名
+function parseFilePath(filePath) {
+  const baseName = path.basename(filePath);
+  const extName = path.extname(filePath);
+  const fileName = path.basename(filePath, extName);
+  return {
+    baseName,
+    extName,
+    fileName
+  };
+}
+
 module.exports = {
   rootPath: path.resolve(__dirname, '..'),
 
@@ -54,5 +66,7 @@ module.exports = {
   textGreen,
   textRed,
   textWhite,
-  textBlack
+  textBlack,
+
+  parseFilePath
 };

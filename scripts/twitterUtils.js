@@ -2,7 +2,8 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const utils = require('./utils');
+const utils = require('./commonUtils');
+const commonUtils = require('./commonUtils');
 
 // 有一张长图，假如有很长，现在把图片分割成多张，然后上传到 twitter
 // 要求分割后的每一张图片的宽度不变，高度为 1000px
@@ -19,16 +20,22 @@ async function _splitImage(
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
+  const fileInfo = commonUtils.parseFilePath(inputImagePath);
   // 获取输入图片的信息
   // 读取图片信息
   const image = sharp(inputImagePath);
-  const { width, height } = await image.metadata();
+  const imageMetadata = await image.metadata();
+  const width = imageMetadata.width;
+  const height = imageMetadata.height;
 
   let startY = 0;
   let segmentIndex = 0;
 
   while (startY < height) {
-    const segmentFileName = path.join(outputDir, `segment_${segmentIndex}.png`);
+    const segmentFileName = path.join(
+      outputDir,
+      `${fileInfo.fileName}_${segmentIndex}.${imageMetadata.format}`
+    );
 
     // 计算当前分割区域的高度
     const endY = Math.min(startY + segmentHeight, height);
